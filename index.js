@@ -42,9 +42,10 @@ function getImagesFromDir(dirPath){
       }
       
     return allImg;
+    asHTML(allImg);
 }
-function asHTML(){
-    `<img src=`
+function asHTML(allImg){
+    `<img src=`+allImg[0]+`>`
 }
 
 app.set('views', __dirname + '/views');
