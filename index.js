@@ -8,9 +8,9 @@ var http=require('http');
 var app=express();
 
 //set the template engine
-//app.set('view engine','ejs');
+app.set('view engine','ejs');
 app.set('views', __dirname + '/views');
-app.set('view engine', 'pug');
+//app.set('view engine', 'pug');
 
 
 var port = process.env.PORT || 4000;
@@ -47,9 +47,9 @@ function getImagesFromDir(dirPath){
         //return path.join(dirPath, fileName);
         return fileName;
       });
-      console.log('files '+myfiles);
+      //console.log('files '+myfiles);
       for(f in files){
-        console.log(f+' : '+myfiles[f]);
+        console.log('file-'+f+' : '+myfiles[f]);
         var stat =fs.statSync(files[f]);
         if(stat && stat.isDirectory()){
             getImagesFromDir(files[f]);

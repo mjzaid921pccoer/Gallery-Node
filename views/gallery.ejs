@@ -1,40 +1,25 @@
 <html>
     <head>
         <title><%-title-%></title>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>        
     </head>
     <body>
-        <h1><%-images[0]-%></h1>
         <div class="box">
             Images:
-            <div class="overlay"> <!-- Put images to display here...--> 
-                <img src="" alt="not loading" />
-                <a href="E:\A_An_Einstein\Courses\WebDevelopment\web-Projects\ImageGalleryNodeJS\Gallery\uploads\NSS_LOGO.png">I</a>
-                <!--<img src="http://localhost:4000/uploads/NSS_LOGO.png" alt="localhost path"/>-->
+            <div id="imagesID" class="overlay"> 
+                <!-- Put images to display here...--> 
             </div>
-        </div>
-        
-        <script>
-            //console.log(images);
-            var link=<%-images[0]-%>
-            $('img').attr('src', link);
-
-        /*$(document).ready(show);
-        function show(){
-            $('img').attr('src', images[0]).parent().hide();
-            var max = images.length;
-            $(".box").hover(
-                function(){ $(this).find(".overlay").fadeIn(); },
-                function(){ 
-                    var img = $(this).find(".overlay").find('img');
-                    var i = Math.floor(Math.random()*max);
-                    $(this).find(".overlay").fadeOut(function(){
-                        img.attr('src', images[i]);
-                    }); 
-                }
-            );        
-        }*/
-
+        </div>        
+        <script>            
+            var picstring="<%-images-%>";
+            var pics=picstring.split(',');                     
+            console.log("EJS: "+pics);
+            for(i=0;i<pics.length;i++){
+                var img=new Image(200,200);
+                img.src=pics[i];
+                var source=document.getElementById("imagesID");
+                source.appendChild(img);
+            }
         </script>
     </body>
 </html>
